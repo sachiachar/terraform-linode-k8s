@@ -15,7 +15,7 @@ locals {
     command = ""
   }
 
-  kubeadm_join_results = concat(data.external.kubeadm_join.*.result, list(local.result))
+  kubeadm_join_results = concat(data.external.kubeadm_join.*.result, [local.result])
   kubeadm_join_command = lookup(local.kubeadm_join_results["0"], "command", "")
 }
 
